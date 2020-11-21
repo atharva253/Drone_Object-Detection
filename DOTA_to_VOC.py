@@ -1,3 +1,4 @@
+# Use this script to convert the DOTA dataset to PASCAL VOC format.
 import os
 from xml.dom.minidom import Document
 from xml.dom.minidom import parse
@@ -99,11 +100,9 @@ def load_annoataion(p):
     with open(p, 'r') as f:
         for line in f.readlines()[2:]:
             label = 'text'
-            #line = [i.strip('\ufeff').strip('\xef\xbb\xbf') for i in line]
-            #print(line)
-
+            
             x1, y1, x2, y2, x3, y3, x4, y4 ,label= line.split(' ')[0:9]
-            #print(label)
+            
             text_polys.append([float(x1), float(y1), float(x2), float(y2), float(x3),float(y3), float(x4), float(y4)])
             text_tags.append(label)
 
@@ -122,8 +121,9 @@ if __name__ == "__main__":
         print(img_name)
         img = cv2.imread(os.path.join(img_path, img_name))
         h, w, d = img.shape
-        #print(xml_name, xml_path, boxes, labels, w, h, d)
         WriterXMLFiles(img_name, xml_name, xml_path, boxes, labels, w, h, d)
 
         if count % 1000 == 0:
             print(count)
+
+
