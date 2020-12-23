@@ -30,7 +30,7 @@ print('Loading model...', end='')
 start_time = time.time()
 
 # Load saved model and build the detection function
-model = tf.saved_model.load_v2('/home/atharva/tensorflow/models/research/object_detection/models/model/iot/saved_model')
+model = tf.saved_model.load_v2('[path to trt graph]' )
 detect_fn = model.signatures['serving_default']
 
 end_time = time.time()
@@ -43,7 +43,7 @@ category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABE
 
 
 
-PATH_TO_TEST_IMAGES_DIR = '/home/atharva/tensorflow/models/research/object_detection/data_dir/DOTA_test'
+PATH_TO_TEST_IMAGES_DIR = '[Enter path to Test images]'
 TEST_IMAGE_PATHS = [ os.path.join(PATH_TO_TEST_IMAGES_DIR, 'image{}.png'.format(i)) for i in range(1, 2) ]
 for image_path in TEST_IMAGE_PATHS:
 
